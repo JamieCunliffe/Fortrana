@@ -1,0 +1,6 @@
+INTEGER FUNCTION Move(x)
+  INTEGER x
+  Move = x 
+END FUNCTION
+
+
