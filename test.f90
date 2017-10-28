@@ -1,4 +1,3 @@
- FUNCTION TestFunc()
-   PRINT *, "Fortran..."
- END FUNCTION TestFunc
-
+FUNCTION TestFunc()
+  PRINT *, "Fortran..."
+END FUNCTION TestFunc
