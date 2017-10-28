@@ -145,6 +145,16 @@ INTEGER FUNCTION move(dir)
       PRINT *, field(i,j)
     END DO
   END DO
+ 
+  IF( DIR .EQ. NAVUP ) THEN
+     currY = currY - 1
+  ELSE IF( DIR .EQ. NAVDOWN ) THEN
+     currY = currY + 1
+  ELSE IF( DIR .EQ. NAVLEFT ) THEN
+     currX = currX - 1
+  ELSE IF( DIR .EQ. NAVRIGHT ) THEN
+     currX = currX + 1
+  ENDIF
   
-  move = dir
+  move = field(currY, currX)
 END FUNCTION move

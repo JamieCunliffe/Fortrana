@@ -23,8 +23,16 @@ namespace test_app
         {
           init_();
           int g1;
-          g1 = 148;
+          g1 = 1;
           Console.WriteLine(move_( ref g1));
+          Console.WriteLine();
+          Console.WriteLine(move_( ref g1));
+          g1 = 3;
+          Console.WriteLine();
+          Console.WriteLine(move_( ref g1));
+          Console.WriteLine();
+          Console.WriteLine(move_( ref g1));
+
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
