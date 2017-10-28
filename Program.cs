@@ -25,12 +25,11 @@ namespace test_app
           int g1;
           g1 = 1;
           Console.WriteLine(move_( ref g1));
-          Console.WriteLine();
           Console.WriteLine(move_( ref g1));
           g1 = 3;
-          Console.WriteLine();
           Console.WriteLine(move_( ref g1));
-          Console.WriteLine();
+          Console.WriteLine(move_( ref g1));
+          g1 = 1;
           Console.WriteLine(move_( ref g1));
 
         }

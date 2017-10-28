@@ -139,13 +139,7 @@ INTEGER FUNCTION move(dir)
   USE Vars
   USE consts  
   INTEGER dir
-  PRINT *, test
-  DO i = 0, 7, 1
-    DO j = 0, 7, 1
-      PRINT *, field(i,j)
-    END DO
-  END DO
- 
+  
   IF( DIR .EQ. NAVUP ) THEN
      currY = currY - 1
   ELSE IF( DIR .EQ. NAVDOWN ) THEN

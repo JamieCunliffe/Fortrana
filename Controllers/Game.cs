@@ -11,7 +11,7 @@ namespace Controllers
     public class API
     {
         private TileContext _currentTile = new EmptyTile("Starting point");
-        private FortranSimulator _fortran= new FortranSimulator();
+        private FortranSimulator _fortran= new FortranSimulator(true);
         private Player _player = new Player();
 
         public string Action( string message )
@@ -63,22 +63,35 @@ namespace Controllers
         }
     }
 
-        public class FortranSimulator
+    public class FortranSimulator
     {
         private int[,] _grid;
-
-        public FortranSimulator()
+        private int positionX = 2;
+        private int positionY = 2;
+        private bool _useFortran;
+        public FortranSimulator(bool useFortran)
         {
+          _useFortran = useFortran;
+          if( useFortran )
+          {
+            FortranAPI.Init();
+          }
+          else
+          {
             _grid = new int[3,3];
 
             _grid[1, 2] = 2;
+          }
         }
-
-        private int positionX = 2;
-        private int positionY = 2;
 
         public int Move( int direction )
         {
+          if( _useFortran )
+          {
+            return FortranAPI.Move( direction );
+          }
+          else
+          {
             switch ( (Direction)direction )
             {
                 case Direction.Up:
@@ -107,8 +120,7 @@ namespace Controllers
                     break;
             }
             return _grid[positionX, positionY];
+          }
         }
     }
-
-
 }
