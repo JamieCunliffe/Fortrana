@@ -33,7 +33,6 @@ namespace test_app
                     options.Listen(IPAddress.Any, 443, listenOptions =>
                     {
                         listenOptions.UseHttps("certificate.pfx", "password");
-
                     });
                 })
                 .UseStartup<Startup>()
