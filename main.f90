@@ -9,7 +9,11 @@ INTEGER FUNCTION intRand(u)
   INTEGER u
   intRand = int(rand(0)*u)+1
 END FUNCTION intRand
+ENUM, BIND(C) :: DIRECTIONS
+  ENUMERATOR :: UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 
+END ENUM
 
+TYPE(DIRECTION) :: DIRECTION
 
 INTEGER FUNCTION init()
   USE Vars
@@ -42,3 +46,7 @@ INTEGER FUNCTION move(dir)
   
   move = dir
 END FUNCTION move
+INTEGER FUNCTION move(x)
+  INTEGER x
+  move = x 
+END FUNCTION
