@@ -16,14 +16,15 @@ namespace test_app
     {
         [DllImport("libmain.so")]
         public static extern int move_(ref int x);
+        [DllImport( "libmain.so")]
+        public static extern int init_();
+ 
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
-
-
-	   int g1;
-	    g1 = 148;
-	    Console.WriteLine(move_( ref g1));
+          init_();
+          int g1;
+          g1 = 148;
+          Console.WriteLine(move_( ref g1));
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
@@ -36,7 +37,7 @@ namespace test_app
                     });
                 })
                 .UseStartup<Startup>()
-		.UseUrls("https://0.0.0.0:443")
+                .UseUrls("https://0.0.0.0:443")
                 .Build();
     }
 }
