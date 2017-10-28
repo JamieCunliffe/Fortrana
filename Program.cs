@@ -16,6 +16,13 @@ namespace test_app
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
+
+            [DllImport("libmain.so")]
+	    public static extern int move_(ref int x);
+
+	    int g1;
+	    g1 = 148;
+	    Console.WriteLine(move_( ref g1));
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
