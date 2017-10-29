@@ -31,6 +31,7 @@ namespace mvc_template.Controllers
 
         public HomeController()
         {
+            _debugMode = false;
             Console.WriteLine( "HomeController constructor ");
             _context = GameContextSingleton.GetGameContext;
         }
@@ -93,8 +94,7 @@ namespace mvc_template.Controllers
 
         private ResponseModel HandleDebugMode( ResultModel model )
         {
-            _debugMode = !_debugMode;
-                        return new ResponseModel
+            return new ResponseModel
             {
                 speech = @"Debug mode enabled",
                 displayText = @"Debug mode enabled"
@@ -143,15 +143,7 @@ namespace mvc_template.Controllers
 
         private ResponseModel HandleRnIntent(ResultModel model)
         {
-            if (model.parameters.phonetic_rn.ToString().Equals("charlie"))
-            {
-                return new ResponseModel
-                {
-
-                    speech = @"Although we currently don't support Nato phonetic alphabet Charlie matches phonetic alphabet Royal Navy was using from 1914 to 1918, please confirm that's what you meant",
-                    displayText = @"Although we currently don't support Nato phonetic alphabet Charlie matches phonetic alphabet Royal Navy was using from 1914 to 1918, please confirm that's what you meant",
-                };
-            }
+            _lastLetter = model.parameters.phonetic_rn.ToString().Substring( 0, 1 );
 
             return new ResponseModel
             {
@@ -159,6 +151,18 @@ namespace mvc_template.Controllers
                 displayText = @"Please confirm " + RnToNato(model.parameters.phonetic_rn.ToString())
             };
         }
+
+        private ResponseModel HandleConfirm(ResultModel model)
+        {
+            _context.Action( model );
+            return new ResponseModel
+            {
+                speech = @"Thank you",
+                displayText = @"Thank you"
+            };
+        }
+
+        private string _lastLetter;
 
         #endregion
 
