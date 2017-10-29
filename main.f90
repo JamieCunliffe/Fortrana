@@ -143,6 +143,17 @@ INTEGER FUNCTION init()
 END FUNCTION init
 
 
+INTEGER FUNCTION isObstacle( val )
+  USE consts
+  INTEGER val
+  IF( val .EQ. OBSTACLE1 .OR. val .EQ. OBSTACLE2 .OR. val .EQ. OBSTACLE3 .OR. val .EQ. OBSTACLE4 .OR. val .EQ. OBSTACLE5 ) THEN
+    isObstacle = 1
+  ELSE
+    isObstacle = 0
+  ENDIF
+END FUNCTION isObstacle
+
+
 INTEGER FUNCTION move(dir)
   USE Vars
   USE consts  
@@ -174,8 +185,12 @@ INTEGER FUNCTION move(dir)
   print *, ''//achar(27)//'[32m **** FORTRANA (c) 1965-1970 (r) Patent Pending **** '//achar(27)//'[0m.'
   IF ( field(tmpY, tmpX) .EQ. POD ) THEN
      print *, ''//achar(27)//'[31m !!! YOU HAVE FALLEN IN THE PIT OF DOOM AND HAVE DIED !!!'//achar(27)//'[0m.'
-  ENDIF 
-  currY = tmpY
-  currX = tmpX
+  ENDIF
+
+  IF( isObstacle( field( tmpY, tmpX ) ) .EQ. 0 ) THEN
+    currY = tmpY
+    currX = tmpX
+  ENDIF
+ 
   move = field(currY, currX)
 END FUNCTION move

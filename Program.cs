@@ -23,19 +23,19 @@ namespace test_app
         {
           init_();
           int g1;
-          g1 = 1;
+          g1 = 2;
           Console.WriteLine(move_( ref g1));
-
-
-
-
           Console.WriteLine();
           Console.WriteLine(move_( ref g1));
           Console.WriteLine();
+          g1 = 3;
+          Console.WriteLine(move_( ref g1 ));
+          Console.WriteLine(move_( ref g1 ));
+          Console.WriteLine(move_( ref g1 ));
+                              
 
 
-
-	  BuildWebHost(args).Run();
+//	  BuildWebHost(args).Run();
 
         }
 
