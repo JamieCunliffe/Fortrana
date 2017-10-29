@@ -36,6 +36,7 @@ namespace Tiles
                 }
                 else
                 {
+                    Console.WriteLine("Monster is dead");
                     _monsterDead = true;
                     return "Success you killed the monster";
                 }

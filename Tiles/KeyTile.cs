@@ -29,7 +29,7 @@ namespace Tiles
                 {
                     //do we need to check if user picked up key
                     player.Inventory.Add( $"{_keyColour}-Key");
-
+                    Console.WriteLine("Added key to inventory");
                     return "You picked up the key";
                 }
                 else

@@ -37,7 +37,7 @@ namespace Controllers
 
         public string Action( ResultModel model )
         {
-
+            Console.WriteLine("Performing action");
             var result = _currentTile.Action( model.action, _player );
 
             if( _player.IsDead )
@@ -87,7 +87,7 @@ namespace Controllers
 
                 if( fortranResult == 6 )
                 {
-                    return "Obstacle in the way";
+                    return @"There is a large pillar blocking your way, you'll have to go around";
                 }
 
                 var t = TileFactory.GetTile( fortranResult );

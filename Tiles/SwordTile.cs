@@ -38,6 +38,7 @@ namespace Tiles
                     //pick up sword
                     Found = true;
                     player.Inventory.Add( "Sword" );
+                    Console.WriteLine("Picked up the sword");
                     return "You picked up the sword";
                 }
             }

@@ -126,8 +126,8 @@ namespace mvc_template.Controllers
             var response = _context.Action( model );
             return new ResponseModel
             {
-                speech = @"Can't handle this command yet",
-                displayText = @"Can't handle this command yet"
+                speech = response,
+                displayText = response
             };
         }
 
