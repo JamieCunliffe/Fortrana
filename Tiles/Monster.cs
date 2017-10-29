@@ -9,22 +9,18 @@ namespace Tiles
 {
     public class MonsterTile : TileContext
     {
-        public MonsterTile()
+        private MonsterTypes _monsterType;
+
+        public MonsterTile( MonsterTypes monsterType )
         {
+            _monsterType = monsterType;
         }
 
         public string Description 
         { 
             get
             {
-                if( ! _monsterDead )
-                {
-                    return "A terrifying monster blocks your path";
-                }
-                else
-                {
-                    return "The corpse of a monster slain in battle lies before your feet";
-                }
+                return ConstantStrings.GetMonsterDescription( _monsterType, !_monsterDead);
             }
         }
 
