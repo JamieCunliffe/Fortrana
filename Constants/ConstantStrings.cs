@@ -6,7 +6,7 @@ namespace Constants
     {
         public static string GetPitOfDoomString()
         {
-            return "You've falled into the pit of doom forever a slave of Hades, please try again an be more careful this time";
+            return "You've fallen into the pit of doom forever a slave of Hel, please try again an be more careful this time";
         }
 
         public static string GetPitOfDoomWarningString()
@@ -28,5 +28,6 @@ namespace Constants
         {
             return "This is where you found the sword earlier, who leave a sword lying about";
         }
+    
     }
 }

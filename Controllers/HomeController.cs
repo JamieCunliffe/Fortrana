@@ -3,11 +3,14 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using mvc_template.models;
+using Controllers;
 
 namespace mvc_template.Controllers
 {
     public class HomeController : Controller
     {
+        private GameContext _context = new GameContext();
+
         public IActionResult Index()
         {
             return Ok("get response");
@@ -53,11 +56,20 @@ namespace mvc_template.Controllers
 
         private ResponseModel HandleMoveIntent(ResultModel model)
         {
+            var response = _context.Move( model );
+
             return new ResponseModel
             {
-                speech = @"Can't handle this command yet",
-                displayText = @"Can't handle this command yet"
+                speech = response,
+                displayText = response
             };
+
+
+            // return new ResponseModel
+            // {
+            //     speech = @"Can't handle this command yet",
+            //     displayText = @"Can't handle this command yet"
+            // };
         }
 
         private ResponseModel HandlePickupIntent(ResultModel model)
