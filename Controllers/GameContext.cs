@@ -86,6 +86,11 @@ namespace Controllers
                 
                 int fortranResult = _fortranProxy.SendToFortran( directionToSend );
 
+                if( fortranResult == 6 )
+                {
+                    return "Obstacle in the way";
+                }
+
                 var t = TileFactory.GetTile( fortranResult );
                 _currentTile = t;
 
@@ -96,6 +101,7 @@ namespace Controllers
                 return $"Error occured, {e.ToString()}";
             }
         }
+
     }
 
     public class FortranProxy
