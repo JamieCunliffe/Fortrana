@@ -15,9 +15,10 @@ namespace Tiles
 
         public string Description { get; }
 
-        public void Action(string action, Player player)
+        public string Action(string action, Player player)
         {
             //do nothing it's an space
+            return "You canot do that here";
         }
     }
 }

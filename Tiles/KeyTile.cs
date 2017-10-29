@@ -21,10 +21,12 @@ namespace Tiles
             }
         }
 
-        public void Action(string action, Player player)
+        public string Action(string action, Player player)
         {
             //do we need to check if user picked up key
             player.Inventory.Add( $"{_keyColour}-Key");
+
+            return "You picked up the key";
         }
         
     }

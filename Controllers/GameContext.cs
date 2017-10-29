@@ -13,10 +13,30 @@ namespace Controllers
     {
         private TileContext _currentTile = new EmptyTile( "This is where your journey begins" );
         private FortranProxy _fortranProxy = new FortranProxy();
+        private Player _player;
+
+        public bool GameOver
+        {
+            get; private set;
+        }
 
         public GameContext()
         {
-            _fortranProxy.Init();
+            _fortranProxy.Start();
+            _player = new Player();
+        }
+
+        public string Action( ResultModel model )
+        {
+
+            var result = _currentTile.Action( model.action, _player );
+
+            if( _player.IsDead )
+            {
+                GameOver = true;
+                return "You died game over";
+            }
+            return result;
         }
 
         public string Move( ResultModel model )
@@ -74,12 +94,17 @@ namespace Controllers
             return Move(direction);
         }
 
+        public void Start()
+        {
+            Init();
+        }
+
         [DllImport("libmain.so")]
         private static extern int move_(ref int x);
         [DllImport( "libmain.so")]
         private static extern int init_();
 
-        public static int Init()
+        private static int Init()
         {
         return init_();
         }

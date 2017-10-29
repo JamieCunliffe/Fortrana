@@ -10,6 +10,6 @@ namespace Tiles
     {
         string Description { get; }
         
-        void Action(string action, Player player);
+        string Action(string action, Player player);
     }
 }

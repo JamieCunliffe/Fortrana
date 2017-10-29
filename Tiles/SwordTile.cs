@@ -29,14 +29,16 @@ namespace Tiles
             }
         }
 
-        public void Action(string action, Player player)
+        public string Action(string action, Player player)
         {
             if( !Found )
             {
                 //pick up sword
                 Found = true;
                 player.Inventory.Add( "Sword" );
+                return "You picked up the sword";
             }
+            return "You cannot do that here";
         }        
 
         private bool Found

@@ -28,7 +28,7 @@ namespace Tiles
             }
         }
 
-        public void Action(string action, Player player)
+        public string Action(string action, Player player)
         {
             if( !_monsterDead )
             {
@@ -36,12 +36,15 @@ namespace Tiles
                 if( !player.Inventory.Contains("Sword") )
                 {
                     player.Health = 0;
+                    return "You died";
                 }
                 else
                 {
                     _monsterDead = true;
+                    return "Success you killed the monster";
                 }
             }
+            return "The monster is already dead do not disgrace its corpse";
         }    
 
         private bool _monsterDead = false;    

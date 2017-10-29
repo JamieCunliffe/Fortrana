@@ -21,5 +21,10 @@ namespace PlayerInfo
         {
             get; private set;
         }
+
+        public bool IsDead
+        {
+            get {  return Health == 0; }
+        }
     }
 }

@@ -19,11 +19,12 @@ namespace Tiles
             get; 
         }
 
-        public void Action(string action, Player player)
+        public string Action(string action, Player player)
         {
             if( !player.Inventory.Contains($"{_keyColour}-Key") )
             {
                 //don't have the key, how should we act?
+                return $"You dont have the {_keyColour} key so this stone is not active";
             }
             else
             {
@@ -31,6 +32,8 @@ namespace Tiles
                 {
                     _input = $"{_input}action";
                 }
+
+                return _input;
             }
         }
 

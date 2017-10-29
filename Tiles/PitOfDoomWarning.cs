@@ -18,9 +18,10 @@ namespace Tiles
             }
         }
 
-        public void Action(string action, Player player)
+        public string Action(string action, Player player)
         {
             //no action required
+            return ConstantStrings.GetPitOfDoomWarningString();
         }
     }
 }
