@@ -33,10 +33,13 @@ namespace Tiles
         {
             if( !Found )
             {
-                //pick up sword
-                Found = true;
-                player.Inventory.Add( "Sword" );
-                return "You picked up the sword";
+                if( action.ToLower().Contains( "pickup") == true )
+                {
+                    //pick up sword
+                    Found = true;
+                    player.Inventory.Add( "Sword" );
+                    return "You picked up the sword";
+                }
             }
             return "You cannot do that here";
         }        

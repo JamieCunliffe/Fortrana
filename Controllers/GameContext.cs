@@ -25,7 +25,6 @@ namespace Controllers
             _fortranProxy.Start();
             _player = new Player();
         }
-
         
 
         public string GetDebugString()

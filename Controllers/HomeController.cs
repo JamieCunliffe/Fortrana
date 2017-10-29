@@ -123,6 +123,7 @@ namespace mvc_template.Controllers
 
         private ResponseModel HandlePickupIntent(ResultModel model)
         {
+            var response = _context.Action( model );
             return new ResponseModel
             {
                 speech = @"Can't handle this command yet",
