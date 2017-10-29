@@ -113,7 +113,7 @@ INTEGER FUNCTION init()
   field(4,6) = INPUT3
   field(4,7) = TEMPTY
 
-  field(5,0) = MONSTER1
+  field(5,0) = MONSTER2
   field(5,1) = TEMPTY
   field(5,2) = KEY3
   field(5,3) = OBSTACLE1
@@ -138,7 +138,7 @@ INTEGER FUNCTION init()
   field(7,4) = TEMPTY
   field(7,5) = TEMPTY
   field(7,6) = TEMPTY
-  field(7,7) = MONSTER4
+  field(7,7) = MONSTER3
 
   
   init = 1
