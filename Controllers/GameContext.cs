@@ -72,6 +72,7 @@ namespace Controllers
                     default:
                         return "I didn't understand that";
                 }
+                directionToSend++;
                 
                 int fortranResult = _fortranProxy.SendToFortran( directionToSend );
 
