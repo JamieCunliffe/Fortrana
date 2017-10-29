@@ -157,7 +157,7 @@ namespace mvc_template.Controllers
 
         private ResponseModel HandleConfirm(ResultModel model)
         {
-            if( model.parameters.boolean == true )
+            if( model.parameters.boolean.ToString() == "true" )
             {
                 _context.Action( _lastLetter );
                 _lastLetter = null;
