@@ -9,4 +9,4 @@ run:
 
 build: dotnet.build fortran.build 
 
-all: dotnet.build fortran.build run
+all: build run
