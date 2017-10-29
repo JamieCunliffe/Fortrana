@@ -48,6 +48,19 @@ namespace Controllers
             return result;
         }
 
+        public string Action( string model )
+        {
+            Console.WriteLine("Performing action");
+            var result = _currentTile.Action( model, _player );
+
+            if( _player.IsDead )
+            {
+                GameOver = true;
+                return "You died game over";
+            }
+            return result;
+        }
+
         public string Move( ResultModel model )
         {
             try

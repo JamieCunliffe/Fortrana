@@ -66,6 +66,8 @@ namespace mvc_template.Controllers
                 case "debug-intent":
                     response = HandleDebugMode( value.result );
                     break;
+                case "confirm-intent":
+                    response = HandleConfirm( value.result );
                 default:
                     response = new ResponseModel
                     {
@@ -154,7 +156,8 @@ namespace mvc_template.Controllers
 
         private ResponseModel HandleConfirm(ResultModel model)
         {
-            _context.Action( model );
+            _context.Action( _lastLetter );
+            _lastLetter = null;
             return new ResponseModel
             {
                 speech = @"Thank you",
