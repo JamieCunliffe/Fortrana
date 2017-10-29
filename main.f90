@@ -192,6 +192,8 @@ INTEGER FUNCTION move(dir)
   IF( isObstacle( field( tmpY, tmpX ) ) .EQ. 0 ) THEN
     currY = tmpY
     currX = tmpX
+  ELSE
+    move = 6
   ENDIF
  
   move = field(currY, currX)
