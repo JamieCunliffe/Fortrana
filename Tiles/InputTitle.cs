@@ -28,11 +28,8 @@ namespace Tiles
             }
             else
             {
-                if ( action.Length <= 1 )
-                {
-                    _input = $"{_input}action";
-                }
-
+                string value = action.Substring( 0,1 );
+                _input = $"{_input}{value}";
                 return _input;
             }
         }
