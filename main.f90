@@ -59,10 +59,12 @@ END FUNCTION intRand
 INTEGER FUNCTION init()
   USE Vars
   USE consts
-
+  
   currX = startX 
   currY = startY
-  
+ 
+  print *,'init',currX,currY
+
   field(0,0) = INPUT1
   field(0,1) = KEY1
   field(0,2) = TEMPTY
