@@ -104,7 +104,13 @@ namespace Controllers
         private static extern int move_(ref int x);
         [DllImport( "libmain.so")]
         private static extern int init_();
+        [DllImport("libmain.so")]
+        private static extern int getxpos_();
+        [DllImport( "libmain.so")]
+        private static extern int getypos_();
 
+
+      
         private static int Init()
         {
         return init_();
@@ -113,6 +119,13 @@ namespace Controllers
         public static int Move( int dir )
         {
         return move_( ref dir );
+        }
+
+        public static int GetXPos() {
+          return getxpos_();
+        }
+        public static int GetYPos() {
+          return getypos_();
         }
     }
 }

@@ -194,3 +194,13 @@ INTEGER FUNCTION move(dir)
  
   move = field(currY, currX)
 END FUNCTION move
+
+INTEGER FUNCTION GetXPos()
+  USE Vars
+  GetXPos = currY
+END FUNCTION GetXPos
+
+INTEGER FUNCTION GetYPos()
+  USE Vars
+  GetYPos = currX
+END FUNCTION GetYPos
