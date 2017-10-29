@@ -41,7 +41,7 @@ namespace Tiles
                     return "You picked up the sword";
                 }
             }
-            return "You cannot do that here";
+            return ConstantStrings.GetMissingSword();  
         }        
 
         private bool Found

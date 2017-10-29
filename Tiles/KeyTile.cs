@@ -23,18 +23,27 @@ namespace Tiles
 
         public string Action(string action, Player player)
         {
-            if( action.ToLower().Contains( "pickup") == true )
+            if( found == false )
             {
-                //do we need to check if user picked up key
-                player.Inventory.Add( $"{_keyColour}-Key");
+                if( action.ToLower().Contains( "pickup") == true )
+                {
+                    //do we need to check if user picked up key
+                    player.Inventory.Add( $"{_keyColour}-Key");
 
-                return "You picked up the key";
+                    return "You picked up the key";
+                }
+                else
+                {
+                    return "I dont know what you mean";
+                }
             }
             else
             {
-                return "I dont know what you mean";
+                return "You found a key here once";
             }
         }
+
+        private bool found = false;
         
     }
 }
