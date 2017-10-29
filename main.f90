@@ -180,7 +180,7 @@ INTEGER FUNCTION move(dir)
 
   IF ( tmpY .GT. 7 ) THEN
      tmpY = 0
-  ELSE IF ( tmpX .LT. 0 ) THEN
+  ELSE IF ( tmpY .LT. 0 ) THEN
      tmpY = 7
   ENDIF
 
