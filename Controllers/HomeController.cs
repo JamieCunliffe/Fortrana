@@ -48,7 +48,7 @@ namespace mvc_template.Controllers
             Console.WriteLine(value);
 
             ResponseModel response;
-
+            Console.WriteLine( $"Action - {value.result.action}" );
             switch (value.result.action)
             {
                 case "move-intent" :
@@ -68,6 +68,7 @@ namespace mvc_template.Controllers
                     break;
                 case "confirm-intent":
                     response = HandleConfirm( value.result );
+                    break;
                 default:
                     response = new ResponseModel
                     {
