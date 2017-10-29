@@ -14,6 +14,10 @@ namespace Controllers
         private TileContext _currentTile = new EmptyTile( "This is where your journey begins" );
         private FortranProxy _fortranProxy = new FortranProxy();
 
+        public GameContext()
+        {
+            _fortranProxy.Init();
+        }
 
         public string Move( ResultModel model )
         {
@@ -67,7 +71,22 @@ namespace Controllers
     {
         public int SendToFortran( int direction )
         {
-            return 0;
+            return Move(direction);
+        }
+
+        [DllImport("libmain.so")]
+        private static extern int move_(ref int x);
+        [DllImport( "libmain.so")]
+        private static extern int init_();
+
+        public static int Init()
+        {
+        return init_();
+        }
+        
+        public static int Move( int dir )
+        {
+        return move_( ref dir );
         }
     }
 }
