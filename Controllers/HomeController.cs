@@ -15,6 +15,7 @@ namespace mvc_template.Controllers
             {
                 if( _gameContext == null )
                 {
+                    Console.WriteLine( "Game context is null so creating a game context");
                     _gameContext = new GameContext();
                 }
                 return _gameContext;
@@ -31,7 +32,7 @@ namespace mvc_template.Controllers
         public HomeController()
         {
             Console.WriteLine( "HomeController constructor ");
-            _context = new GameContext();
+            _context = GameContextSingleton.GetGameContext;
         }
 
         public IActionResult Index()
