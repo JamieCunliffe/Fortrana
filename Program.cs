@@ -34,7 +34,7 @@ namespace test_app
           Console.WriteLine(move_( ref g1 ));
 
 
-//	  BuildWebHost(args).Run();
+	  BuildWebHost(args).Run();
 
         }
 
