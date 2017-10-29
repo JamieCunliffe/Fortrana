@@ -169,7 +169,7 @@ INTEGER FUNCTION move(dir)
   ELSE IF( DIR .EQ. NAVRIGHT ) THEN
      tmpX = tmpX + 1
   ENDIF
-
+  print *,tmpY,tmpX,dir
   IF ( tmpX .GT. 7 ) THEN
      tmpX = 0
   ELSE IF ( tmpX .LT. 0 ) THEN
