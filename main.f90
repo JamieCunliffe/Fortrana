@@ -196,7 +196,7 @@ INTEGER FUNCTION move(dir)
     move = 6
   ENDIF
  
-  print *,'You are at tile '//tmpY//' long ',tmpX//' lat.  Tile return code is '//field(currY,currX),' direction '//dir
+  print *,'You are at tile '//tmpY//' long ',tmpX//' lat.  Tile return code is '//field(currY,currX)//,' direction '//dir
 
 END FUNCTION move
 
