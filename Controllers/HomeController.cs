@@ -9,7 +9,13 @@ namespace mvc_template.Controllers
 {
     public class HomeController : Controller
     {
-        private GameContext _context = new GameContext();
+        private GameContext _context;
+
+        public HomeController()
+        {
+            Console.WriteLine( "HomeController constructor ");
+            _context = new GameContext();
+        }
 
         public IActionResult Index()
         {
