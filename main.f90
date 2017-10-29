@@ -34,6 +34,11 @@ INTEGER :: SWORD=69
 
 INTEGER :: NRPOD = 665
 INTEGER :: POD = 666
+
+INTEGER :: GRIDMAX = 7
+INTEGER :: startX = 4
+INTEGER :: startY = 5
+
 END MODULE consts
 
 
@@ -41,6 +46,8 @@ MODULE Vars
   INTEGER, DIMENSION(0:8,0:8) :: field
   INTEGER currX
   INTEGER currY
+  INTEGER tmpX
+  INTEGER tmpY
 END MODULE Vars
   
 INTEGER FUNCTION intRand(u)
@@ -53,8 +60,8 @@ INTEGER FUNCTION init()
   USE Vars
   USE consts
 
-  currX = 4
-  currY = 5
+  currX = startX 
+  currY = startY
   
   field(0,0) = INPUT1
   field(0,1) = KEY1
@@ -135,26 +142,40 @@ INTEGER FUNCTION init()
   init = 1
 END FUNCTION init
 
+
 INTEGER FUNCTION move(dir)
   USE Vars
   USE consts  
   INTEGER dir
-  PRINT *, test
-  DO i = 0, 7, 1
-    DO j = 0, 7, 1
-      PRINT *, field(i,j)
-    END DO
-  END DO
- 
+  tmpY = currY
+  tmpX = currX 
   IF( DIR .EQ. NAVUP ) THEN
-     currY = currY - 1
+     tmpY = tmpY - 1
   ELSE IF( DIR .EQ. NAVDOWN ) THEN
-     currY = currY + 1
+     tmpY = tmpY + 1
   ELSE IF( DIR .EQ. NAVLEFT ) THEN
-     currX = currX - 1
+     tmpX = tmpX - 1
   ELSE IF( DIR .EQ. NAVRIGHT ) THEN
-     currX = currX + 1
+     tmpX = tmpX + 1
   ENDIF
-  
+
+  IF ( tmpX .GT. 7 ) THEN
+     tmpX = 0
+  ELSE IF ( tmpX .LT. 0 ) THEN
+     tmpX = 7
+  ENDIF
+
+  IF ( tmpY .GT. 7 ) THEN
+     tmpY = 0
+  ELSE IF ( tmpX .LT. 0 ) THEN
+     tmpY = 7
+  ENDIF
+
+  print *, ''//achar(27)//'[32m **** FORTRANA (c) 1965-1970 (r) Patent Pending **** '//achar(27)//'[0m.'
+  IF ( field(tmpY, tmpX) .EQ. POD ) THEN
+     print *, ''//achar(27)//'[31m !!! YOU HAVE FALLEN IN THE PIT OF DOOM AND HAVE DIED !!!'//achar(27)//'[0m.'
+  ENDIF 
+  currY = tmpY
+  currX = tmpX
   move = field(currY, currX)
 END FUNCTION move
