@@ -171,7 +171,6 @@ INTEGER FUNCTION move(dir)
   ELSE IF( DIR .EQ. NAVRIGHT ) THEN
      tmpX = tmpX + 1
   ENDIF
-  print *,tmpY,tmpX,dir
   IF ( tmpX .GT. 7 ) THEN
      tmpX = 0
   ELSE IF ( tmpX .LT. 0 ) THEN
@@ -197,6 +196,8 @@ INTEGER FUNCTION move(dir)
     move = 6
   ENDIF
  
+  print *,'You are at tile '//tmpY//' long ',tmpX//' lat.  Tile return code is '//field(currY,currX),' direction '//dir
+
 END FUNCTION move
 
 INTEGER FUNCTION GetXPos()
