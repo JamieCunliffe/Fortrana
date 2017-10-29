@@ -72,7 +72,7 @@ INTEGER FUNCTION init()
   field(0,4) = TEMPTY
   field(0,5) = INPUT2
   field(0,6) = OBSTACLE1
-  field(0,7) = SWARD
+  field(0,7) = SWORD
   
     
   field(1,0) = TEMPTY
