@@ -38,6 +38,9 @@ namespace mvc_template.Controllers
                 case "phonetic-rn-intent":
                     response = HandleRnIntent(value.result);
                 break;
+                case "debug-intent":
+                    response = HandleDebugMode( value.result );
+                    break;
                 default:
                     response = new ResponseModel
                     {
@@ -47,12 +50,34 @@ namespace mvc_template.Controllers
                 break;
             }
 
+            if( _debugMode)
+            {
+                var debugStr = _context.GetDebugString();
+
+                response = new ResponseModel
+                {
+                    speech = response.speech,
+                    displayText = debugStr
+                };
+            }
 
 
             return Ok(response);
         }
 
         #region intent-handlers
+
+        private ResponseModel HandleDebugMode( ResultModel model )
+        {
+            _debugMode = !_debugMode;
+                        return new ResponseModel
+            {
+                speech = @"Debug mode enabled",
+                displayText = @"Debug mode enabled"
+            };
+        }
+
+        private bool _debugMode;
 
         private ResponseModel HandleMoveIntent(ResultModel model)
         {

@@ -26,6 +26,16 @@ namespace Controllers
             _player = new Player();
         }
 
+        
+
+        public string GetDebugString()
+        {
+            int x = _fortranProxy.GetX();
+            int y = _fortranProxy.GetY();
+
+            return $"current position ({x},{y})";
+        }
+
         public string Action( ResultModel model )
         {
 
@@ -100,6 +110,16 @@ namespace Controllers
             Init();
         }
 
+        public int GetX()
+        {
+            return GetXPos();
+        }
+
+        public int GetY()
+        {
+            return GetYPos();
+        }
+
         [DllImport("libmain.so")]
         private static extern int move_(ref int x);
         [DllImport( "libmain.so")]
@@ -109,8 +129,6 @@ namespace Controllers
         [DllImport( "libmain.so")]
         private static extern int getypos_();
 
-
-      
         private static int Init()
         {
         return init_();
