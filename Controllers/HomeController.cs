@@ -7,6 +7,23 @@ using Controllers;
 
 namespace mvc_template.Controllers
 {
+    public static class GameContextSingleton
+    {
+        public static GameContext GetGameContext
+        {
+            get
+            {
+                if( _gameContext == null )
+                {
+                    _gameContext = new GameContext();
+                }
+                return _gameContext;
+            }
+        }
+
+        private static GameContext _gameContext;
+    }
+
     public class HomeController : Controller
     {
         private GameContext _context;
