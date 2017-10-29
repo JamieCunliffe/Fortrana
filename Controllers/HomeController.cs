@@ -157,16 +157,25 @@ namespace mvc_template.Controllers
 
         private ResponseModel HandleConfirm(ResultModel model)
         {
-            _context.Action( _lastLetter );
-            _lastLetter = null;
+            if( model.parameters.boolean == true )
+            {
+                _context.Action( _lastLetter );
+                _lastLetter = null;
+                return new ResponseModel
+                {
+                    speech = @"Thank you",
+                    displayText = @"Thank you"
+                };
+            }
+
             return new ResponseModel
             {
-                speech = @"Thank you",
-                displayText = @"Thank you"
+                speech = @"OK we won't save that letter",
+                displayText = @"OK we won't save that lette"
             };
         }
 
-        private string _lastLetter;
+        private static string _lastLetter;
 
         #endregion
 

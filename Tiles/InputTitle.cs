@@ -28,10 +28,14 @@ namespace Tiles
             }
             else
             {
-                string value = action.Substring( 0,1 );
-                _input = $"{_input}{value}";
-                return _input;
+                if( action != null && action.Length > 0 )
+                {
+                    string value = action.Substring( 0,1 );
+                    _input = $"{_input}{value}";
+                    return _input;
+                }
             }
+            return "Even Odin doesn't understand";
         }
 
         private string _input;
